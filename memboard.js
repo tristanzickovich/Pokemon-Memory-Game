@@ -5,6 +5,7 @@ var tiles_flipped = 0;
 var scoreTotal = 0;
 var totalTime = 0;
 var runtimer;
+var gamePlay_Pause = -1;
 //0 if not found, 1 if found: A-L
 var found_tiles = [0,0,0,0,0,0,0,0,0,0,0,0];
 Array.prototype.memory_tile_shuffle = function(){
@@ -42,6 +43,24 @@ function gameTimer(){
 	++totalTime;
 	document.getElementById("timer").innerHTML = totalTime;
 }
+function pauseGame(){
+	if(gamePlay_Pause < 0)
+		window.clearInterval(runtimer);
+	else
+		runtimer = window.setInterval(gameTimer, 1000);
+	gamePlay_Pause *= -1;
+}
+function restartGame(){
+	window.clearInterval(runtimer);
+	alert("Board cleared... generating new board");
+	document.getElementById('memory_board').innerHTML = "";
+	newBoard();
+	updateScore(0);
+	document.getElementById("timer").innerHTML = "0";
+	totalTime = 0;
+	gamePlay_Pause = -1;
+	runtimer = window.setInterval(gameTimer,1000);
+}
 //***
 
 function newBoard(){
@@ -54,7 +73,7 @@ function newBoard(){
 	document.getElementById('memory_board').innerHTML = output;
 }
 function memoryFlipTile(tile,val){
-	if(tile.innerHTML == "" && memory_values.length < 2 && !tileFound(val)){
+	if(tile.innerHTML == "" && memory_values.length < 2 && !tileFound(val) && gamePlay_Pause < 0){
 		tile.style.backgroundImage = "url('resizedpics/" + val + ".png')";
 		if(memory_values.length == 0){
 			memory_values.push(val);
@@ -72,14 +91,7 @@ function memoryFlipTile(tile,val){
             	memory_tile_ids = [];
 				// Check to see if the whole board is cleared
 				if(tiles_flipped == memory_array.length){
-					window.clearInterval(runtimer);
-					alert("Board cleared... generating new board");
-					document.getElementById('memory_board').innerHTML = "";
-					newBoard();
-					updateScore(0);
-					document.getElementById("timer").innerHTML = "0";
-					totalTime = 0;
-					window.setInterval(gameTimer,1000);
+					restartGame;
 				}
 			} else {
 				function flip2Back(){

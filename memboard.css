@@ -42,3 +42,30 @@ div#memory_board > div{
 	cursor:pointer;
 	text-align:center;
 }
+ul#navbar{
+	list-style-type: none;
+	margin: auto;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+	width: 850px;
+	text-align: center;
+	color: white;
+}
+ul#navbar li{
+	display: inline-block;
+	padding: 15px;
+	font-size: 30px;
+}
+ul#navbar li audio{
+	vertical-align: middle;
+}
+button{
+	font-size: 25px;
+	padding: 5px;
+	background-color: #6f6f6f;
+	color: white;
+}
+button#stop:hover, button#restart:hover{
+	background-color: blue;
+}
