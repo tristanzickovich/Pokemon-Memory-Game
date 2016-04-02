@@ -1,3 +1,25 @@
+body{
+	background: #faee58;
+}
+h1{
+	text-align: center;
+	font-size: 60px;
+}
+div#infoBoard{
+	font-size: 40px;
+	text-align: center;
+	padding: 10px;
+	width: 800px;
+	height:50px;
+	position: block;
+	margin:0px auto;
+}
+span#timeInfo{
+	float: left;
+}
+span#scoreInfo{
+	float: right;
+}
 div#memory_board{
 	background:#CCC;
 	border:#999 1px solid;
@@ -7,7 +29,9 @@ div#memory_board{
 	margin:0px auto;
 }
 div#memory_board > div{
-	background: url(tile_bg.jpg) no-repeat;
+	background: url(resizedpics/pokeball.png) no-repeat;
+	background-color: red;
+	background-size: 111px 111px;
 	border:#000 1px solid;
 	width:71px;
 	height:71px;
