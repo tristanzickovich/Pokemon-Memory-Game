@@ -20,6 +20,7 @@ Array.prototype.memory_tile_shuffle = function(){
 function posTileFound(val){
 	return val.charCodeAt() - 65;
 }
+//checks if tile clicked has already been found
 function tileFound(val){
 	if(found_tiles[posTileFound(val)]>0)
 		return true;
@@ -29,8 +30,10 @@ function updateScore(adjustment){
 	//increase score
 	if(adjustment > 0)
 		scoreTotal += 100;
+	//decrease score
 	else if (adjustment < 0)
 		scoreTotal -= 20;
+	//reset score
 	else
 		scoreTotal = 0;
 	document.getElementById("scoreCounter").innerHTML = scoreTotal;
