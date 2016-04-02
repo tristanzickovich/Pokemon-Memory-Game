@@ -57,8 +57,13 @@ function restartGame(){
 	newBoard();
 	updateScore(0);
 	document.getElementById("timer").innerHTML = "0";
+	//reset variables
 	totalTime = 0;
 	gamePlay_Pause = -1;
+	memory_values = [];
+    memory_tile_ids = [];
+    found_tiles = [0,0,0,0,0,0,0,0,0,0,0,0];
+    tiles_flipped = 0;
 	runtimer = window.setInterval(gameTimer,1000);
 }
 //***
@@ -91,7 +96,7 @@ function memoryFlipTile(tile,val){
             	memory_tile_ids = [];
 				// Check to see if the whole board is cleared
 				if(tiles_flipped == memory_array.length){
-					restartGame;
+					restartGame();
 				}
 			} else {
 				function flip2Back(){
