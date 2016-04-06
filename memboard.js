@@ -1,3 +1,4 @@
+//game variables
 var memory_array = ['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J','K','K','L','L'];
 var memory_values = [];
 var memory_tile_ids = [];
@@ -6,8 +7,10 @@ var scoreTotal = 0;
 var totalTime = 0;
 var runtimer;
 var gamePlay_Pause = -1;
-//0 if not found, 1 if found: A-L
+	//0 if not found, 1 if found: A-L
 var found_tiles = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+//functions
 Array.prototype.memory_tile_shuffle = function(){
     var i = this.length, j, temp;
     while(--i > 0){
