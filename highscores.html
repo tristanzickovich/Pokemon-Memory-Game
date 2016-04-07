@@ -3,7 +3,8 @@
 	<head>
 		<title> Memory Game Highscores</title>
 		<link rel="stylesheet" type="text/css" href="memboard.css">
-		<script src="highscores.js"></script>
+		<script type="text/javascript" src="memboard.js"></script>
+		<script type="text/javascript" src="highscores.js"></script>
 	</head>
 	<body>
 		<h1>HIGHSCORES</h1>
@@ -12,11 +13,13 @@
 				<tr>
 					<th> rank </th>
 					<th> score </th>
+					<th> time (sec) </th>
+					<th> player </th>
 				</tr>
 			</thead>
 			<tbody></tbody>
 		</table>
 		<script>populateScores();</script>
-		<button type="button" onclick="addScore(8)"> add </button>
+		<button type="button" onclick="clearScores()">Clear Scores</button>
 	</body>
 </html>

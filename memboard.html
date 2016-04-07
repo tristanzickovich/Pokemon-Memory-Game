@@ -3,7 +3,8 @@
 	<head>
 		<title> Memory Game </title>
 		<link rel="stylesheet" type="text/css" href="memboard.css">
-		<script src="memboard.js"></script>
+		<script type="text/javascript" src="memboard.js"></script>
+		<script type="text/javascript" src="highscores.js"></script>
 	</head>
 	<body>
 		<h1> Pokemon Memory Game </h1>
@@ -21,7 +22,7 @@
 		<script>newBoard();</script>
 		<ul id="navbar">
 			<li> <button type="button" onclick="restartGame()" id="restart">restart game</button></li>
-			<li> <button type="button" onclick="pauseGame()" id="stop">pause/resume game</button></li>
+			<li> <button type="button" onclick="pauseGame()" id="stop">pause game</button></li>
 			<li>
 				<audio controls autoplay loop>
 					<source src="music/pokemusic.mp3" type="audio/mpeg">

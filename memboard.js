@@ -1,3 +1,4 @@
+document.write('<script type="text/javascript" src="highscores.js"></script>');
 //game variables
 var memory_array = ['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J','K','K','L','L'];
 var memory_values = [];
@@ -7,6 +8,7 @@ var scoreTotal = 0;
 var totalTime = 0;
 var runtimer;
 var gamePlay_Pause = -1;
+var userName = "moses";
 	//0 if not found, 1 if found: A-L
 var found_tiles = [0,0,0,0,0,0,0,0,0,0,0,0];
 
@@ -47,13 +49,19 @@ function gameTimer(){
 	document.getElementById("timer").innerHTML = totalTime;
 }
 function pauseGame(){
-	if(gamePlay_Pause < 0)
+	if(gamePlay_Pause < 0){
 		window.clearInterval(runtimer);
-	else
+		document.getElementById("stop").innerHTML="resume game";
+	}
+	else{
 		runtimer = window.setInterval(gameTimer, 1000);
+		document.getElementById("stop").innerHTML="pause game";
+	}
 	gamePlay_Pause *= -1;
 }
 function restartGame(){
+	if(addScore(scoreTotal, totalTime, userName))
+		alert("New High Score");
 	window.clearInterval(runtimer);
 	alert("Board cleared... generating new board");
 	document.getElementById('memory_board').innerHTML = "";
