@@ -1,3 +1,4 @@
+//link other js file
 document.write('<script type="text/javascript" src="highscores.js"></script>');
 //game variables
 var memory_array = ['A','A','B','B','C','C','D','D','E','E','F','F','G','G','H','H','I','I','J','J','K','K','L','L'];
@@ -68,6 +69,7 @@ function restartGame(){
 	newBoard();
 	updateScore(0);
 	document.getElementById("timer").innerHTML = "0";
+	document.getElementById("stop").innerHTML="pause game";
 	//reset variables
 	totalTime = 0;
 	gamePlay_Pause = -1;

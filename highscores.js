@@ -1,9 +1,35 @@
 //highscore variables
-var numScores = 5;
-var top_scores = [1000, 999, 800];
-var score_times = [300, 250, 333];
-var top_players = ["john", "john", "bill"];
+var top_scores = [];
+var score_times = [];
+var top_players = [];
+
 //highscore functions
+//save data locally
+function saveData(){
+	var temp1 = JSON.stringify(top_scores);
+	var temp2 = JSON.stringify(score_times);
+	var temp3 = JSON.stringify(top_players);
+	localStorage.setItem("topScores", temp1);
+	localStorage.setItem("scoreTimes", temp2);
+	localStorage.setItem("topPlayers", temp3);
+}
+//load local data
+function loadData(){
+	var temp1 = localStorage.getItem("topScores");
+	var temp2 = localStorage.getItem("scoreTimes");
+	var temp3 = localStorage.getItem("topPlayers");
+
+	top_scores = JSON.parse(temp1);
+	score_times = JSON.parse(temp2);
+	top_players = JSON.parse(temp3);
+	if(!top_scores){
+		top_scores = [];
+		score_times = [];
+		top_players = [];
+	}
+}
+//call to update HS values
+loadData();
 function clearScores(){
 	var curTable = document.getElementById("hsTable");
 	while(curTable.rows.length > 1) {
@@ -12,6 +38,7 @@ function clearScores(){
 	top_scores = [];
 	score_times = [];
 	top_players = [];
+	localStorage.clear();
 }
 function insertScore(newscore, newtime, player, newposition, scoreSize){
 	var startpos = scoreSize;
@@ -30,6 +57,7 @@ function insertScore(newscore, newtime, player, newposition, scoreSize){
 	top_players[newposition] = player;
 }
 function addScore(curscore, curtime, player){
+	loadData();
 	var scoreSize = top_scores.length;
 	var inserted = false;
 	//check if score is > than any existing scores
@@ -47,6 +75,7 @@ function addScore(curscore, curtime, player){
 		top_players.push(player);
 		inserted = true;
 	}
+	saveData();
 	return inserted;
 }
 function populateScores(){
