@@ -138,14 +138,22 @@ function nameSubmit(){
 	userName = document.getElementById('curuser').value;
 	toggleHidden('hsAchieved');
 	updateDesiredName(userName);
+	toggleHidden('restart');
+	toggleHidden('stop');
 	restartGame();
 }
 function isHS(){
-	window.clearInterval(runtimer);
+	gamePlay_Pause = -1;
+	pauseGame();
+	toggleHidden('restart');
+	toggleHidden('stop');
 	if(addScore(scoreTotal, totalTime, userName))
 		toggleHidden('hsAchieved');
-	else
+	else{
+		toggleHidden('restart');
+		toggleHidden('stop');
 		restartGame();
+	}
 }
 
 runtimer = window.setInterval(gameTimer, 1000);
