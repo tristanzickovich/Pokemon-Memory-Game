@@ -2,6 +2,7 @@
 var top_scores = [];
 var score_times = [];
 var top_players = [];
+var insertedpos = 0;
 
 //highscore functions
 //save data locally
@@ -55,6 +56,7 @@ function insertScore(newscore, newtime, player, newposition, scoreSize){
 	top_scores[newposition] = newscore;
 	score_times[newposition] = newtime;
 	top_players[newposition] = player;
+	insertedpos = newposition;
 }
 function addScore(curscore, curtime, player){
 	loadData();
@@ -74,6 +76,7 @@ function addScore(curscore, curtime, player){
 		score_times.push(curtime);
 		top_players.push(player);
 		inserted = true;
+		insertedpos = scoreSize;
 	}
 	saveData();
 	return inserted;
@@ -95,4 +98,9 @@ function populateScores(){
 		newcell = row.insertCell(3);
 		newcell.innerHTML = top_players[i];
 	}
+}
+function updateDesiredName(updatedName){
+	loadData();
+	top_players[insertedpos] = updatedName;
+	saveData();
 }

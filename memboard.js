@@ -61,9 +61,6 @@ function pauseGame(){
 	gamePlay_Pause *= -1;
 }
 function restartGame(){
-	if(addScore(scoreTotal, totalTime, userName))
-		alert("New High Score");
-	window.clearInterval(runtimer);
 	alert("Board cleared... generating new board");
 	document.getElementById('memory_board').innerHTML = "";
 	newBoard();
@@ -109,7 +106,7 @@ function memoryFlipTile(tile,val){
             	memory_tile_ids = [];
 				// Check to see if the whole board is cleared
 				if(tiles_flipped == memory_array.length){
-					restartGame();
+					isHS();
 				}
 			} else {
 				function flip2Back(){
@@ -129,6 +126,26 @@ function memoryFlipTile(tile,val){
 			}
 		}
 	}
+}
+function toggleHidden(divID){
+	var item = document.getElementById(divID);
+	if(item && item.className === 'hidden')
+		item.className = 'visible';
+	else if(item && item.className ==='visible')
+		item.className = 'hidden';
+}
+function nameSubmit(){
+	userName = document.getElementById('curuser').value;
+	toggleHidden('hsAchieved');
+	updateDesiredName(userName);
+	restartGame();
+}
+function isHS(){
+	window.clearInterval(runtimer);
+	if(addScore(scoreTotal, totalTime, userName))
+		toggleHidden('hsAchieved');
+	else
+		restartGame();
 }
 
 runtimer = window.setInterval(gameTimer, 1000);

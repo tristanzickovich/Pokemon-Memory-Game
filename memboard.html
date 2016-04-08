@@ -21,7 +21,7 @@
 		<div id="memory_board"></div>
 		<script>newBoard();</script>
 		<ul id="navbar">
-			<li> <button type="button" onclick="restartGame()" id="restart">restart game</button></li>
+			<li> <button type="button" onclick="isHS()" id="restart">restart game</button></li>
 			<li> <button type="button" onclick="pauseGame()" id="stop">pause game</button></li>
 			<li>
 				<audio controls autoplay loop>
@@ -30,5 +30,10 @@
 				</audio>
 			</li>
 		</ul>
+		<div class="hidden" id="hsAchieved">
+			New High Score! Enter Desired Player Name Below (max 10 characters): <br>
+			<input type="text" maxlength="10" min="1" placeholder="player name" id="curuser">
+			<input type="button" value="submit" onclick="nameSubmit()">
+		</div>
 	</body>
 </html>
