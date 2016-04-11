@@ -96,7 +96,7 @@ function memoryFlipTile(tile,val){
 		} else if(memory_values.length == 1 && (memory_tile_ids[0] != tile.id)){
 			memory_values.push(val);
 			memory_tile_ids.push(tile.id);
-			if(memory_values[0] == memory_values[1] && (memory_tile_ids[0] != memory_tile_ids[1])){
+			if(memory_values[0] == memory_values[1]){
 				//true for increase score
 				updateScore(1);
 				found_tiles[posTileFound(val)]++;

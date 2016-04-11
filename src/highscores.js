@@ -64,7 +64,7 @@ function addScore(curscore, curtime, player){
 	var inserted = false;
 	//check if score is > than any existing scores
 	for(i = 0; i < scoreSize; ++i){
-		if(curscore > top_scores[i]){
+		if((curscore > top_scores[i]) || (curscore === top_scores[i] && curtime < score_times[i])){
 			insertScore(curscore, curtime, player, i, scoreSize);
 			inserted = true;
 			break;
